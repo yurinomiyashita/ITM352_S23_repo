@@ -1,0 +1,40 @@
+ /* General */  
+html{
+
+    font-size: 15px;
+    text-align: center;
+}
+body{
+    width: 800px;
+    margin: 0 auto;
+  
+}
+
+img{
+    width:  200px;
+}
+
+h1, h2 {
+    text-align: center;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+ /* Typography */  
+.item{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+ /* block styling */  
+ header, aside, main, footer {
+    padding: 20px;
+  }
+  main {
+    flex: 7;
+  }
+ /* Form styling */  
+
+ /* Styling the products display */ 
+
+ 

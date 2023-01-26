@@ -3,28 +3,28 @@ html{
 
     font-size: 15px;
     text-align: center;
-    font-family: Oswald;
 }
 body{
-    width: 800px;
+    width: 900px;
     margin: 0 auto;
   
 }
 
 img{
     width:  200px;
+    height: auto;
 }
 
 h1, h2 {
     text-align: center;
-    margin: 0;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
  /* Typography */  
 .item{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content:space-around;
+    margin-bottom: auto;
     
 }
  /* block styling */  
@@ -40,7 +40,7 @@ h1, h2 {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-    background: url(../Lab2/image/phone.png) no-repeat 60% center;
+    background: url(../Lab2/image/phone_globe.jpg) no-repeat center;
   }
  /* Form styling */  
 

@@ -1,44 +1,39 @@
 
 h1,h2{
-    font-family: 'Oswald', sans;
+    font-family: 'Oswald';
 }
-ul{
-    list-style: none;
+
+p{
+    font-family: 'Oswald';
 }
 li{
     display: inline;
 }
+ul{
+    list-style: none;
+}
 #list a{
-    margin-left: 70px;
-    margin-right: 70px;
+    margin-left: 60px;
+    margin-right: 60px;
 }
 
 body{
-    color:darkblue;
-    font-family: 'Oswald' ,sans;
-    margin:10px 50px 10px 50px;
-    width: 950px;
-    background-color: ivory;
+color:darkblue;
+margin: 10px 50px 10px 50px;
+width: 950px;
+background-color: ivory;
 }
 
 img{
-    float: left;
-    margin-right: 10px;
-
+    float:left;
 }
-#left{
+.left{
     float: left;
     width: 300px;
     padding: 6px;
 }
-
-#middle{
-   margin-left: 300px;
-   margin-right: 300px;
-   padding: 6px;
-}
-#right{
-    float: right;
+.right{
+    float: left;
     width: 300px;
     padding: 6px;
 }

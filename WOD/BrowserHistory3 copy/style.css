@@ -1,0 +1,39 @@
+
+h1,h2{
+    font-family: 'Oswald';
+}
+
+p{
+    font-family: 'Oswald';
+}
+li{
+    display: inline;
+}
+ul{
+    list-style: none;
+}
+#list a{
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+body{
+color:darkblue;
+margin: 10px 50px 10px 50px;
+width: 950px;
+background-color: ivory;
+}
+
+img{
+    float:left;
+}
+.left{
+    float: left;
+    width: 300px;
+    padding: 6px;
+}
+.right{
+    float: left;
+    width: 300px;
+    padding: 6px;
+}

@@ -1,0 +1,62 @@
+ /* General */  
+html{
+
+    font-size: 15px;
+    text-align: center;
+}
+body{
+    width: 900px;
+    margin: 0 auto;
+  
+}
+
+img{
+    width:  200px;
+    height: auto;
+}
+
+h1, h2 {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+ /* Typography */  
+.item{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    margin-bottom: auto;
+    
+}
+ /* block styling */  
+ header, aside, main, footer {
+    padding: 20px;
+  }
+  
+  body > div {
+    border: 5px solid black;
+    display: flex;
+  }
+  main {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    background: url(../Lab2/image/phone_globe.jpg) no-repeat center;
+  }
+ /* Form styling */  
+
+ /* Styling the products display */ 
+ .rotate img
+ {
+   animation: rotation .3s infinite linear;
+ }
+ 
+ @keyframes rotation {
+   from {
+     transform: rotate(0deg);
+   }
+   to {
+     transform: rotate(359deg);
+   }
+ }
+ 
+ 

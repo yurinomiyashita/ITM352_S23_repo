@@ -13,17 +13,24 @@
     <style id='localStyle'></style>
     <script>
         const store_name = "Yurino Miyashita";
-        var hits = 1;
-        spins = 2;
+        var hits = 0;
+        var spins = 2;
     </script>
 </head>
 
 <body>
     <header>
         <h1><span id="s_name"></span>'s Used Smart Phone Store</h1>
+        <p style="text-align: center; font-weight: bold;">
+            Hits:<span id="hits_span">0</span>
+            Spins:<span id="spins_span">0</span>
+          
+        </p>
         <script>
-             s_name.innerHTML=store_name;
+             s_name.innerHTML=store_name; 
+             spins = spins + 1; 
         </script>
+
     </header>
     <div>
         <aside>

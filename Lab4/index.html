@@ -18,11 +18,16 @@
     </script>
 </head>
 
-<body>
+<body onclick="hits_span.innerHTML = hits; spins_span.innerHTML = spins;">
     <header>
         <h1><span id="s_name"></span>'s Used Smart Phone Store</h1>
+        <p style="text-align: center; font-weight: bold;">
+            Hits:<span id="hits_span">0</span>
+            Spins:<span id="spins_span">0</span>
+        </p>
+            
         <script>
-             s_name.innerHTML=store_name;
+             s_name.innerHTML=store_name; 
         </script>
     </header>
     <div>

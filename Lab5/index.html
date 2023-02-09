@@ -15,19 +15,22 @@
         const store_name = "Yurino Miyashita";
         var hits = 0;
         var spins = 2;
+        var first_name="Yurino"; 
+        var last_name= "Miyahsita"; 
     </script>
 </head>
 
 <body>
-    <header>
-        <h1><span id="s_name"></span>'s Used Smart Phone Store</h1>
+    <header><span style="font-size: 120%;">
+        <h1><b><span id="f_name"></span></b> <i><span id="l_name"></span></i></span>'s Used Smart Phone Store</h1>
         <p style="text-align: center; font-weight: bold;">
             Hits:<span id="hits_span">0</span>
             Spins:<span id="spins_span">0</span>
           
         </p>
         <script>
-             s_name.innerHTML=store_name; 
+             f_name.innerHTML= first_name;
+             l_name.innerHTML=last_name;  
              spins = spins + 1; 
         </script>
 
@@ -79,6 +82,32 @@
         <h1>
             Your One Stop For Used Phones
         </h1>
+        <script>
+            var line= 1; 
+            var d= new Date();
+            let year = d.getFullYear();
+            /*function to set time with house and minutes w/ AM or PM */
+            function formatAMPM(date) {
+                var hours = date.getHours();
+                var minutes = date.getMinutes();
+                var ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12;
+                hours = hours ? hours : 12; // the hour '0' should be '12'
+                minutes = minutes < 10 ? '0'+minutes : minutes;
+                var strTime = hours + ':' + minutes + ' ' + ampm;
+                return strTime;
+            }
+        </script>
+        <table style="margin-left: auto; margin-right: auto; text-align: center;" border="1">
+            <tbody><tr><th colspan="2"><h1>Your One Stop For Used Phones - Y.M.'s</h1></th></tr>
+            <tr><td><script>document.write(line)</script>.</td><td><br>Copyright@ <script>document.write(first_name + ' '+ last_name)</script></td></tr>
+            <tr><td><script>document.write(line+1)</script>.</td><td><span id="yr"></span></td></tr>
+            <tr><td><script>document.write(line+2)</script>.</td><td><span id="tm"></span></td></tr>
+        </tbody></table>
+        <script>
+             yr.innerHTML=year;
+             tm.innerHTML= formatAMPM(new Date);
+        </script>
     </footer>
 </body>
 

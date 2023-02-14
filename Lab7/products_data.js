@@ -19,4 +19,4 @@ name1 = "HTC";
  image5 = "http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg";
 
 console.log("Product variables loaded...");
-console.log(`this is ${name1}, $${price1}`);
+//console.log(`this is ${name1}, $${price1}`);

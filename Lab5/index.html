@@ -98,12 +98,16 @@
                 return strTime;
             }
         </script>
-        <table style="margin-left: auto; margin-right: auto; text-align: center;" border="1">
-            <tbody><tr><th colspan="2"><h1>Your One Stop For Used Phones - Y.M.'s</h1></th></tr>
+
+        <table style="margin-left: auto; margin-right: auto; text-align: center boarder=1;" >
+            <tbody>
+            <tr><th colspan="2"><h1>Your One Stop For Used Phones - Y.M.'s</h1></th></tr>
             <tr><td><script>document.write(line)</script>.</td><td><br>Copyright@ <script>document.write(first_name + ' '+ last_name)</script></td></tr>
             <tr><td><script>document.write(line+1)</script>.</td><td><span id="yr"></span></td></tr>
             <tr><td><script>document.write(line+2)</script>.</td><td><span id="tm"></span></td></tr>
-        </tbody></table>
+            </tbody>
+        </table>
+
         <script>
              yr.innerHTML=year;
              tm.innerHTML= formatAMPM(new Date);

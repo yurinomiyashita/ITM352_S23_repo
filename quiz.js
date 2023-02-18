@@ -1,3 +1,5 @@
+//quiz for objects and array 
+
 var classes_array = ['ITM352','BUS311','ACC101','FIN100','BUS310','MOM202']
 console.log(classes_array[2]);
 classes_array[2]='ITM353';

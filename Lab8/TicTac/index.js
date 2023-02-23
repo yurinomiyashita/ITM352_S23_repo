@@ -1,10 +1,15 @@
+//javascript 
 //assinging variables 
 // . indicates getting element by class, # indictaes getting elements by id 
-//DOM objects 
 const cells = document.querySelectorAll(".cell");
 const statusText = document.querySelector("#statusText");
 const restartBtn = document.querySelector("#restartBtn");
-//set conditions for win status
+//set conditions for win status, assume 
+/*  assume table's number is below 
+    0|1|2
+    3|4|5
+    7|8|9
+ */
 const winConditions = [
     [0, 1, 2],
     [3, 4, 5], 
@@ -22,8 +27,8 @@ let running = false;
 initializeGame();
 
 function initializeGame(){
-    cells.forEach(cell => cell.addEventListener("click", cellClicked));  //clicking cell will excute cellClciked function
-    restartBtn.addEventListener("click", restartGame); //restart button excute restartGame function by clicking
+    cells.forEach(cell => cell.addEventListener("click", cellClicked));  //clicking cell will recall cellClciked function
+    restartBtn.addEventListener("click", restartGame); //restart button recalls restartGame function 
     statusText.textContent = `${currentPlayer}'s turn`;  //initial game player set and display
     running = true;
 }
@@ -31,11 +36,11 @@ function initializeGame(){
 function cellClicked(){   //when cells are clicked 
     const cellIndex = this.getAttribute("cellIndex");     //getting cellIndex attribute from index.html
 
-    if(options[cellIndex] != ""|| !running){ 
+    if(options[cellIndex] != ""|| !running){     
         return; 
     }
 
-    updateCell(this,cellIndex);
+    updateCell(this,cellIndex); //recall update cell function when the cellIndex is not empty string 
    // changePlayer();
     checkWinner();
 }
@@ -56,7 +61,7 @@ function checkWinner(){
         const cellB = options[condition[1]];
         const cellC = options[condition[2]];
 
-        if(cellA == ""||cellB ==""|| cellC ==""){
+        if(cellA == ""||cellB ==""|| cellC ==""){   
             continue;
         }
         if(cellA == cellB && cellB == cellC){
@@ -64,11 +69,11 @@ function checkWinner(){
             break; 
         }
     }
-    if (roundWon){
+    if (roundWon){    //if win condition match, and display winner 
         statusText.textContent = `${currentPlayer} wins!`;
         running = false; 
     }
-    else if (!options.includes ("")){
+    else if (!options.includes ("")){    //if above condition didn't meet, then display draw 
         statusText.textContent = `Draw!`;
         running = false; 
     }

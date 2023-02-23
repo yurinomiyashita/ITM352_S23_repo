@@ -161,8 +161,21 @@
  </script>   
       </tbody>
     </table>
+    <p><br /></p>
+    <font face="arial"><b><span style="font-weight: bold;">OUR SHIPPING POLICY
+              IS:</span>A subtotal $0 - $49.99 will be $2 shipping<br />
+          A subtotal $50 - $99.99 will be $5 shipping<br />
+          Subtotals over $100 will be charged 5% of the subtotal amount</b></font>
+    <font face="arial">
+      <br>
+      <br>
     <table style="border: 1px solid black;text-align: center;">
-      <tbody >
+      <tbody id='tb' onclick="new_row = this.appendChild(document.createElement('tr'));
+      for (let r=0; r < this.rows[0].cells.length; r++)
+      new_cell = new_row.appendChild(document.createElement('td'));
+      new_cell.innerHTML = 'XXX';"
+      }
+>
         <tr style="border: 1px solid black;">
             <th style="border: 1px solid black;">Product #</th>
             <th style="border: 1px solid black;">Quantity</th>
@@ -191,12 +204,8 @@
      
       </tbody>
       </table> 
+      <input type="button" value="Delete Last Row" onclick="document.getElementById('tb').deleteRow(-1)">  <style> tr:hover {background-color: yellow;} </style>
 
-    <p><br /></p>
-<font face="arial"><b><span style="font-weight: bold;">OUR SHIPPING POLICY
-          IS:</span>A subtotal $0 - $49.99 will be $2 shipping<br />
-      A subtotal $50 - $99.99 will be $5 shipping<br />
-      Subtotals over $100 will be charged 5% of the subtotal amount</b></font>
-<font face="arial">
+   
 </body>
 </html>

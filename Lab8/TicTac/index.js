@@ -1,5 +1,6 @@
 //assinging variables 
 // . indicates getting element by class, # indictaes getting elements by id 
+//DOM objects 
 const cells = document.querySelectorAll(".cell");
 const statusText = document.querySelector("#statusText");
 const restartBtn = document.querySelector("#restartBtn");

@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Smart Phone Store</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Cherry+Swash|Raleway" rel="stylesheet">
+
+    <link id='xxx' href="products-style.css" rel="stylesheet">
+
+    <style id='localStyle'></style>
+    <script>
+        const store_name = "Yurino Miyashita";
+        var hits = 1;
+        spins = 2;
+        //products data 
+    
+    </script>
+    <script src="./products_data.js"></script>
+</head>
+
+<body onclick="hits_span.innerHTML = hits; spins_span.innerHTML = spins;">
+    <header>
+        <h1><span id="s_name"></span>'s Used Smart Phone Store</h1>
+        <p style="text-align: center; font-weight: bold;">
+            Hits:<span id="hits_span">0</span>
+            Spins:<span id="spins_span">0</span>
+        </p>
+            
+        <script>
+             s_name.innerHTML=store_name; 
+        </script>
+    </header>
+    <div>
+        <aside>
+            <div>
+                <input id="speedSlider" type="range" min=".1" max="5" step=".1" onchange="
+            localStyle.innerHTML = '.rotate img {animation-duration: ' + speedSlider.value + 's;}';
+            " style="direction: rtl;" />
+            </div>
+        </aside>
+
+        <main>
+            <script>
+                for (i=0; i<= products.length; i++){
+                    document.write(` <section class="item" onmouseover="this.className='item rotate';" onclick="this.className='item';">
+                <h2>${products[i]['name']}</h2>
+                <p>$${products[i]['price']}</p>
+                <img src="${products[i]['image']}">  </section>
+            `);                }
+           </script>
+          
+
+           
+        
+
+        </main>
+    </div>
+    <footer>
+        <h1>
+            Your One Stop For Used Phones
+        </h1>
+    </footer>
+</body>
+
+</html>

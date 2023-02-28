@@ -47,10 +47,10 @@
                 for (i=1; i<=5; i++){
                     document.write(` <section class="item" onmouseover="this.className='item rotate';" onclick="this.className='item';">
                 <h2>${eval("name" + i)}</h2>
-                <p>$${eval("name" + i)}</p>
-                <img id="image1_id">${eval("image" + i)}</section>`);
-                }
-            </script>
+                <p>$${eval("price" + i)}</p>
+                <img src="${eval("image" + i)}">  </section>
+            `);                }
+           </script>
           
 
            

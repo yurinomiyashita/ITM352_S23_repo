@@ -40,7 +40,7 @@ h1, h2 {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-    background: url(../Lab2/image/phone_globe.jpg) no-repeat center;
+    background: url(/WOD/SmartPhoneProducts2/image/phone_globe.jpg) no-repeat center;
   }
  /* Form styling */  
 

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Day of the Week Calculator</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script>
+		// Define monthKey object
+		var monthKey = {
+			"January": 0,
+			"February": 3,
+			"March": 3,
+			"April": 6,
+			"May": 1,
+			"June": 4,
+			"July": 6,
+			"August": 2,
+			"September": 5,
+			"October": 0,
+			"November": 3,
+			"December": 5
+		};
+
+		function calculateDayOfWeek() {
+			// Get input values
+			var month = document.getElementById("month_id").value;
+			var day = parseInt(document.getElementById("day_id").value);
+			var year = parseInt(document.getElementById("year_id").value);
+
+			// Calculate day of week
+			var century = Math.floor(year / 100);
+			var yearOfCentury = year % 100;
+			var dayOfWeek = (day + Math.floor(2.6 * monthKey[month]) - 2 * century + yearOfCentury + Math.floor(yearOfCentury / 4) + Math.floor(century / 4)) % 7;
+
+			// Get day of week name
+			var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+			var dayOfWeekName = daysOfWeek[dayOfWeek];
+
+			// Output result
+			document.getElementById("dow_span").innerHTML = month + " " + day + ", " + year + " is a " + dayOfWeekName;
+		}
+	</script>
+</head>
+<body>
+	<h1>Day of the Week Calculator</h1>
+	<p>Enter a date to find out what day of the week it falls on.</p>
+	<label for="month_id">Month:</label>
+	<select id="month_id">
+		<script>
+			for (month in monthKey) {
+				document.write("<option>" + month + "</option>");
+			}
+		</script>
+	</select>
+	<label for="day_id">Day:</label>
+	<input id="day_id" type="text">
+	<label for="year_id">Year:</label>
+	<input id="year_id" type="text">
+	&nbsp;
+	<span id="dow_span"></span>
+	<br>
+	<input type="button" value="Find day of week" onclick="calculateDayOfWeek()">
+</body>
+</html>

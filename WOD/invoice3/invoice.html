@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>invoice3</title>
+    <script src="/WOD/invoice3/products_data.js"></Script>
+   
+</head>
+<body>
+    <table border="2">
+        <tbody>
+          <tr>
+            <th style="text-align: center;" width="43%">Item</th>
+            <th style="text-align: center;" width="11%">quantity</th>
+            <th style="text-align: center;" width="13%">price</th>
+            <th style="text-align: center;" width="54%">extended price</th>
+          </tr>
+          <script>
+
+            function  isNonNegInt(q, returnErrors = false){
+             errors = [ ]; // assume no errors at first
+                if(Number(q) != q) errors.push('Not a number!'); // Check if string is a number value
+                if(q < 0) errors.push('Negative value!'); // Check if it is non-negative
+                if(parseInt(q) != q) errors.push('Not an integer!'); // Check that it is an integer
+                
+                return returnErrors ? errors : (errors.length == 0);   
+             }
+            
+            
+      
+             var generate_item_rows = function(product_quantities_array) {
+              var subtotal = 0;
+              for (let i in product_quantities_array) {
+                if (product_quantities_array[i] == 0) continue;
+                var errors = isNonNegInt(product_quantities_array[i], true);
+                if (errors.length == 0) {
+                  var extended_price = product_quantities_array[i] * product[i].price;
+                  var errorMessage = "";
+                } else {
+                  var extended_price = 0;
+                  var errorMessage = errors.join('<br>');
+                }
+                document.write(`
+                  <tr>
+                    <td width="43%">${product[i].name}</td>
+                    <td align="center" width="11%">${product_quantities_array[i]}<div style="color:red;">${errorMessage}</div></td>
+                    <td width="13%">$${product[i].price.toFixed(2)}</td>
+                    <td width="54%">$${extended_price.toFixed(2)}</td>
+                  </tr>
+                `);
+                subtotal += extended_price;
+              }
+              return subtotal;
+            }
+      
+            var product_quantities = [1,-5, 3, 2, "cat"];
+          
+            this.innerHTML=generate_item_rows(product_quantities);
+            </script>
+          <script>
+         var subtotal = 0;  
+      var tax_rate= 0.0575;
+     var tax= tax_rate//*subtotal; 
+
+     //calculate shipping 
+     //when subtotal is less than $50
+     if (subtotal <=50){
+       shipping=2;
+     }
+     else if(subtotal<=100){  //when subtotal is less than 100, shipping cost is $5
+       shipping = 5;
+     }
+
+     if (subtotal >100){
+       shipping = 0.05*subtotal;  //when subtotal is more than$ 100 , shipping cost is 5% of subtotal
+     }
+
+     //calculate total amount
+     var total=subtotal+tax+ shipping; 
+
+        document.write(`
+          
+          <tr>
+            <td colspan="4" width="100%">&nbsp;</td>
+          </tr>
+          <tr>
+            <td style="text-align: center;" colspan="3" width="67%">Sub-total</td>
+            <td width="54%">$${subtotal.toFixed(2)}</td>
+          </tr>
+          <tr>
+            <td style="text-align: center;" colspan="3" width="67%"><span style="font-family: arial;">Tax @ 5.75%</span></td>
+            <td width="54%">$${tax.toFixed(2)}</td>
+          </tr>
+          <tr>
+            <td style="text-align: center;" colspan="3" width="67%">Shipping</td>
+            <td width="54%">$${shipping.toFixed(2)}</td>
+          </tr>
+          <tr>
+            <td style="text-align: center;" colspan="3" width="67%"><strong>Total</strong></td>
+            <td width="54%"><strong>$${total.toFixed(2)}</strong></td>
+          </tr>
+        `);
+     
+
+          </script>
+        </tbody>
+      </table>
+
+      <p><br /></p>
+<font face="arial"><b><span style="font-weight: bold;">OUR SHIPPING POLICY
+            IS:</span>A subtotal $0 - $49.99 will be $2 shipping<br />
+        A subtotal $50 - $99.99 will be $5 shipping<br />
+        Subtotals over $100 will be charged 5% of the subtotal amount</b></font>
+<font face="arial">
+</body>
+</html>

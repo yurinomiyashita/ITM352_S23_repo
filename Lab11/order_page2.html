@@ -26,11 +26,10 @@
     function checkQuantityTextbox(the_quantity_textbox) {
         var errors =isNonNegInt(the_quantity_textbox.value);
         purchase_button.disabled = true;          //onclick to call the checkquantitytextbox 
-        if(errors.length=0){
+        if(errors.length==0){
             purchase_button.disabled = false;     
         }
-        document.getElementById(the_quantity_textbox.id + "_message").innerHTML;
-        errors.join(' ');
+        document.getElementById(the_quantity_textbox.id + "_message").innerHTML = errors.join(' ');
     }
 
     //check if it's nagative value or not 

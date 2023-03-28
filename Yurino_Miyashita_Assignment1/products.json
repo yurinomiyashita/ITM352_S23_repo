@@ -1,0 +1,51 @@
+[
+    {
+            "name": "BUS 311",
+            "chapter" : 12,
+            "price": 13.00,
+            "quantity_available":15,
+            "image": "./images/AtomicHabits.jpg", 
+            "description":""
+    },
+     {
+            "name": "BUS 312",
+            "author":"Robert T Kiyosaki",
+            "price": 7.68,
+            "quantity_available":23,
+            "image": "./images/RichDadPoorDad.jpg",
+            "description":""
+    },
+    {
+            "name": "BUS 314",
+            "author":"Kevin Kwan",
+            "price": 9.99,
+            "quantity_available":9,
+            "image": "./images/CrazyRichAsian.jpg",
+            "description":""
+    },
+    {
+            "name": "BUS 315",
+            "author":"Malcolm Gladwell",
+            "price": 9.65,
+            "quantity_available":31,
+            "image": "./images/TalkingtoStrangers.jpg",
+            "description":""
+    },
+   {
+            "name": "BUS 310",
+            "author":"Taylor Jekkins Reid",
+            "price": 21.92,
+            "quantity_available":4,
+            "image": "./images/SevenHusband.jpg",
+            "description":""
+    },
+    {
+            "name": "ITM 352",
+            "author":"Colleen Hoover",
+            "price": 11.99,
+            "quantity_available":5,
+            "image": "./images/ItEndsWithUs.jpg",
+            "description":""
+    }
+]
+    

@@ -1,18 +1,54 @@
+<!--
+Yurino Miyashita
+This file is an HTML index page to allow users to go to the products display page
+file is modified from smart phone products index.html page
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Golf Shoppe</title>
-</head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <!--loading cascading style sheet-->
+  <link href="./css/products-style1.css" type="text/css" rel="stylesheet">
+  
+  <!--loading products data-->
+  <script src="./products.json" type="text/javascript"></script>  
 
+  <!--Font awesome link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+</head>
 <body>
-    <input type="button" value="Click here to enter the store" id="enter_button" onclick="pageRedirect()">
-<script>
-function pageRedirect() {
-  location.replace("store.html")
-}
-</script>
+<!--header section starts-->
+<header>
+<a href="#" class="logo">Sunday BookStore <span></span></a>
+
+<nav class="navbar">
+  <a href="index.html">home</a>
+  <a href="store.html?key=Mystery">Mystery</a>
+  <a href="store.html?key=Romance">Romance</a>
+  <a href="store.html?key=Non-Fiction">Non-Fiction</a>
+</nav>
+
+<div class="icons">
+<a href="./login.html" class="fas fa-user"></a>
+<a href="./shoppingcart.html" class="fas fa-shopping-cart"></a>
+</div>
+</header>
+<!-- header section ends-->
+
+<!--home section starts-->
+<section class="home" id="home">
+
+  <div class="content">
+    <h3>Welcome to Sunday Bookstore!</h3>
+    <span>Our mission is to provide you with bestsellers</span>
+    <p>Mystery, romance, and Non-Fiction books are available</p>
+  </div>
+</section>
+<!--home section ends-->
+<script src="js/common.js"></script>
 </body>
 </html>

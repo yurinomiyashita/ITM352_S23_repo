@@ -69,12 +69,7 @@ header .navbar a:hover{
   color:var(--green);
 }
 
-header .icons a{
-  font: 4rem;
-  color: gray;
-  margin-left: 1.5rem;
-  
-}
+
 
 header .icons a:hover{
   color:var(--green);
@@ -117,7 +112,7 @@ header .icons a:hover{
 
 .products .box-container{
   display: grid;
-  grid-template-columns: repeat(auto-fit);
+  grid-template-rows: repeat(auto-fit);
   gap: 1.5rem;
   block-size: 30%;
   max-width: 320px;

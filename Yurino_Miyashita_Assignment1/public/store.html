@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Golf Shoppe</title>
+    <link id='xxx' href="/Yurino_Miyashita_Assignment1/css/products-style1.css" rel="stylesheet">
     <script>
         var products = [
     {
@@ -55,17 +56,23 @@
 
     <form action="./process_form" method="POST"></form>
     <main>
+       
     <script>
         for (i=0; i<products.length; i++){
-            document.write(`
+            document.write(` 
+            <div class="polaroid"> 
+            <img src="${products[i].image}"> 
+            <div class="container">
             <h2> ${products[i].name}</h2>
             <p> ${products[i].price}</p>
             <label> Quantity</label>
             <input type="text" placeholder =${products[i].quantity_available} name="quantity${i}"></input>
-            <img src="${products[i].image}">
-            `);
+            </div>
+            </div>
+            `);   
         }
     </script>
+
     <input type="submit" value="purchase" onclick="">
     </main>
 </body>

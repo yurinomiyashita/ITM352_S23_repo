@@ -29,7 +29,7 @@ function isNonNegInt(q, retunErrors=false) {
   return errors;
 }
 //<** your code here ***>
-//app.use(myParser.urlencoded({extended:true}));
+app.use(myParser.urlencoded({extended:true}));
 app.post("/process_form", function(request, response){
   process_quantity_form(request.body, response);
   response.send(request.body);
@@ -38,8 +38,15 @@ app.post("/process_form", function(request, response){
 app.use(express.static(__dirname + '/public'));
 
 //loading json file 
+var products = require(__dirname + '/products.json'); 
 
-var product_array = require(__dirname + '/products.json'); 
+// Routing taking json file    
+app.get("/products.json", function (request, response, next) {
+  response.type('.js');
+  let products_str = `let products = ${JSON.stringify(products)};`;
+  response.send(products_str);
+});
+
 
 // start server
 app.listen(8080, () => console.log(`listening on port 8080`));

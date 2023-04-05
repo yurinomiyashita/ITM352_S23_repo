@@ -3,6 +3,13 @@ var app = express();
 
 // Routing 
 
+// Routing taking json file    
+app.get("/products.json", function (request, response, next) {
+  response.type('.js');
+  let products_str = `let products = ${JSON.stringify(products)};`;
+  response.send(products_str);
+});
+
 // monitor all requests
 app.all('*', function (request, response, next) {
    console.log(request.method + ' to ' + request.path);
@@ -40,12 +47,7 @@ app.use(express.static(__dirname + '/public'));
 //loading json file 
 var products = require(__dirname + '/products.json'); 
 
-// Routing taking json file    
-app.get("/products.json", function (request, response, next) {
-  response.type('.js');
-  let products_str = `let products = ${JSON.stringify(products)};`;
-  response.send(products_str);
-});
+
 
 
 // start server

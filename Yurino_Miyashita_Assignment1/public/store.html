@@ -56,7 +56,7 @@
 
    
     <main>
-        <form action="./process_form" method="POST">
+        <form action="./purchase" method="POST">
     <script>
         for (i=0; i<products.length; i++){
             document.write(` 
@@ -65,7 +65,7 @@
             <div class="container">
             <h2> ${products[i].name}</h2>
             <p> ${products[i].price}</p>
-            <label> Quantity</label>
+            <span id="quantity_textbox_message"> Quantity</label>
             <input type="text" placeholder =${products[i].quantity_available} name="quantity${i}"></input>
             </div>
             </div>
@@ -73,8 +73,30 @@
         }
     </script>
 
-    <input type="submit" value="purchase" onclick="">
+    <input type="submit" value="purchase" name="purchase_submit" onclick="checkQuantityTextbox(this)">
 </form>
     </main>
+
+    <script>
+// process purchase request (validate quantities, check quantity available)
+function checkQuantityTextbox(the_quantity_textbox) {
+  var errors =isNonNegInt(the_quantity_textbox.value);
+  purchase_button.disabled = true;          //onclick to call the checkquantitytextbox 
+  if(errors.length==0){
+      purchase_button.disabled = false;     
+  }
+  document.getElementById(the_quantity_textbox.id + "_message").innerHTML = errors.join(' ');
+}
+
+function isNonNegInt(q, retunErrors=false) {
+  errors = []; // assume no errors at first
+  if (Number(q) != q) errors.push('Please type a number'); // Check if string is a number value
+  else {
+      if (q < 0) errors.push('Please type positive value'); // Check if it is non-negative
+      if (parseInt(q) != q) errors.push('Please type an integer!'); // Check that it is an integer
+  }
+  return errors;
+}
+    </script>
 </body>
 </html>

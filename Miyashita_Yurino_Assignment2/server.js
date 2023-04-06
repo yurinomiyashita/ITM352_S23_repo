@@ -1,21 +1,61 @@
-var express = require('express');
-var app = express();
+/*
+Yurino Miyashita
+This file is a server and serve as server side data validation for log in, registration, 
+edit account and store display page to check inpuut
+ */
 
-// Routing 
+// Load Express Package
+let express = require('express');
+let app = express();
+
 // Load Body-Parser Package
 let parser = require("body-parser");
 
 // Load QueryString Package
 const qs = require('querystring');
+let fs = require('fs')
 
-// route all other GET requests to files in public 
+// Get Body
+app.use(parser.urlencoded({
+  extended: true
+}));
+
+// Monitor all requests
+app.all('*', function (request, response, next) {
+  console.log(request.method + ' to ' + request.path);
+  next();
+});
+
+// Route all other GET requests to files in public 
 app.use(express.static(__dirname + '/public'));
 
-//loading json file 
-var products = require(__dirname + '/products.json'); 
+// Load Product Data   
+let products = require(__dirname + '/products.json');
+var json_file_path = __dirname + '/user_data.json';
+
+// Initialize Quantity
+products.forEach((prod, i) => {
+  prod.quantity_available = products[i].quantity_available
+})
+
+var qty_obj = {};   //store quantity entered in store.html 
 
 
 
+// ------------------------- store.html ----------------------------//
+//determine if there is error in quantity text box.
+//copied from invoice.html in store 1 direcotry and modified 
+function notAPosInt(arrayElement, returnErrors = false) {
+  errors = [];    // [] is to display below if functions,  assume no errors at first
+  if (arrayElement == '') {
+    arrayElement = 0;
+  }
+  //assume there was no entry on texbox
+  if (Number(arrayElement) != arrayElement) errors.push('Not a number!'); // Check if string is a number value
+  if (arrayElement < 0) errors.push('Negative value!'); // Check if it is non-negative
+  if (parseInt(arrayElement) != arrayElement) errors.push('Not an integer!'); // Check that it is an integer
+  return (returnErrors ? errors : (errors.length == 0))  //if there is errors or not
+}
 // Routing taking json file    
 app.get("/products.json", function (request, response, next) {
   response.type('.js');
@@ -23,38 +63,7 @@ app.get("/products.json", function (request, response, next) {
   response.send(products_str);
 });
 
-
-// monitor all requests
-app.all('*', function (request, response, next) {
-   console.log(request.method + ' to ' + request.path);
-   next();
-});
-
-// process purchase request (validate quantities, check quantity available)
-function checkQuantityTextbox(the_quantity_textbox) {
-  var errors =isNonNegInt(the_quantity_textbox.value);
-  purchase_button.disabled = true;          //onclick to call the checkquantitytextbox 
-  if(errors.length==0){
-      purchase_button.disabled = false;     
-  }
-  document.getElementById(the_quantity_textbox.id + "_message").innerHTML = errors.join(' ');
-}
-
-function isNonNegInt(q, retunErrors=false) {
-  errors = []; // assume no errors at first
-  if (Number(q) != q) errors.push('Please type a number'); // Check if string is a number value
-  else {
-      if (q < 0) errors.push('Please type positive value'); // Check if it is non-negative
-      if (parseInt(q) != q) errors.push('Please type an integer!'); // Check that it is an integer
-  }
-  return errors;
-}
-//<** your code here ***>
-// Get Body
-app.use(parser.urlencoded({
-  extended: true
-}));
-
+// Process purchase request (validate quantities, check quantity available)
 app.post("/purchase", function (request, response, next) {
   console.log(request.body); //getting request from invoice.html body
   let quantities = request.body['quantity']; //assigning value to quantities as quantity entred in store.html textbox
@@ -62,7 +71,7 @@ app.post("/purchase", function (request, response, next) {
   let available_quantity = false;
   for (i in quantities) {
     console.log(quantities[i])    
-    if (isNonNegInt(quantities[i]) == false) {
+    if (notAPosInt(quantities[i]) == false) {
       errors['quantity' + i] = `Please submit valid data for ${products[i].name}!` //if quantity enetred is invalid number 
     }
     if (!(quantities[i] === '') && Number(quantities[i]) === 0) {
@@ -75,6 +84,7 @@ app.post("/purchase", function (request, response, next) {
       errors['quantity' + i] = `We currenly don't have ${(quantities[i])}${products[i].name}. please check our website later!`
     }
   }
+  
   //taking quantity entered to display in invoice and direct to log in page
   //changed login.html from invoice.html
   let quantity_object = {
@@ -88,7 +98,7 @@ app.post("/purchase", function (request, response, next) {
     // Save quantity requested
     qty_obj = quantity_object
     //sends invoice with quantity with quary string
-    response.redirect('./store.html?' + qs.stringify(quantity_object)); //inserting value as quary string to invoice.html table 
+    response.redirect('./invoice.html?' + qs.stringify(quantity_object)); //inserting value as quary string to invoice.html table 
   } else { //with errors, redirect to login.html  
     let errors_obj = {
       "errors": JSON.stringify(errors)
@@ -100,7 +110,5 @@ app.post("/purchase", function (request, response, next) {
 
 
 
-
-
-// start server
+// ------------------ Start server ---------------------//
 app.listen(8080, () => console.log(`listening on port 8080`));

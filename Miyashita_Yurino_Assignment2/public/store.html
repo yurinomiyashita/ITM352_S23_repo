@@ -39,7 +39,7 @@ and click purchase to direct them to log in/registration page
     const productsNumber = Number(qtyTextbox.id.replace('quantity', ''));    //replace messages with "quantity" 
     if(products[productsNumber].quantity_available < Number(qtyTextbox.value)) errs = ['<b><font color="red">no stock!</font></b>'];
     console.log(errs.join('<font color="red">, </font>'))  //when we don't have inventory of quantity entered, display error message in red 
-    document.getElementById(qtyTextbox.id + '_label').innerHTML = errs.join('<font color="red">, </font>');
+    document.getElementsById(qtyTextbox.id + '_label').innerHTML = errs.join('<font color="red">, </font>');
   };
 
  
@@ -156,9 +156,21 @@ and click purchase to direct them to log in/registration page
 <footer><!--submit button and submit the quantity entered value"purchase" is detremined in sever.js-->
     <div class="label"></div>
        <center> 
-           <input disabled type="submit" value ="purchase" name="purchase_submit" onlick=""></center> 
+           <input disabled type="submit" value ="purchase" name="purchase_submit" id="purcahse_message" onlick=""></center> 
         </form>
     </div>
+<script>
+  function validate(){
+    var quantity=getElementById(`quantity${i}_label`);
+    var error = getElementById(`purchase_message`);
+    if (quantity.isNonNegInt ==false) {
+     error.textContent = "Please Select your item";
+    return false; 
+    } else{
 
+    }
+
+  }
+</script>
 </footer>
 </html>

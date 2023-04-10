@@ -22,14 +22,15 @@
     
     font-family:serif;
     margin: 0;
-    
+    font-family: 'Raleway', sans-serif;
+
     text-align: center;
   }
   
   
   h1 {
     font-size: 5rem;
-    background-size: 48px 48px;
+    background-size: 40px 40px;
     background-blend-mode: lighten;
     color:white;
   }
@@ -49,11 +50,12 @@
   
   p {
     font-size: 2rem;
+    color:white;
   }
 
 
   header {
-   background-color:#68a3d5;
+   background-color:#77ac78;
     border-bottom: 0;
   
   }
@@ -72,7 +74,7 @@
   /* block styling */
   
   .menu{
-    background-color:#68a3d5;
+    background-color:#77ac78;
     border: 1px;
     padding:5px;
     margin-bottom: 30px;
@@ -90,15 +92,19 @@
 
   .menu-list-item a{
     display: block;
-    font-size: 14px;
+    font-size: 20px;
     padding: 10px;
-    background-color: #68a3d5;
+    background-color: #77ac78;
+    color: white;
   }
 
   header, aside, main, footer {
     padding: 20px;
   }
-  
+  body {
+    text-align: center;
+    background: white;
+}
   
   aside {
     border-right: 5px solid black;

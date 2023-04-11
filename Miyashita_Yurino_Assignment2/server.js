@@ -63,7 +63,9 @@ app.get("/products.json", function (request, response, next) {
   response.send(products_str);
 });
 
+
 // Process purchase request (validate quantities, check quantity available)
+//IR3
 app.post("/purchase", function (request, response, next) {
   console.log(request.body); //getting request from invoice.html body
   let quantities = request.body['quantity']; //assigning value to quantities as quantity entred in store.html textbox
@@ -86,7 +88,6 @@ app.post("/purchase", function (request, response, next) {
   }
   
   //taking quantity entered to display in invoice and direct to log in page
-  //changed login.html from invoice.html
   let quantity_object = {
     "quantity": JSON.stringify(quantities)
   }; //creating string by quantity_object

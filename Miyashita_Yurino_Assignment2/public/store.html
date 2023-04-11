@@ -1,7 +1,7 @@
 <!-- 
-Yurino Miyashhita 
-This file is HTML product display page and user can enter desired quantity 
-and click purchase to direct them to log in/registration page
+Yurino Miyashita 
+This file is HTML product display page and direct user to
+ invioce page by clicking purchase button at the buttom of the page
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -10,27 +10,28 @@ and click purchase to direct them to log in/registration page
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Golf Shoppe</title>
+  <!--loading css page-->
   <link href="./css/products-style.css" type="text/css" rel="stylesheet">
-  <link href="images/" rel="images">
+  <!--loading product json file-->
   <script src="./products.json" type="text/javascript"></script>
-  </script>
+  <!--i used functions below-->
   <script>
-  
 // Determines valid quantity (If "q" is a negative interger)
- //output errors based on inputted quantity 
- function isNonNegInt(q, return_errors = false) {
-          var errors = []; // assume no errors at first
-          if (q == '') q = 0; // handle blank inputs as if they are 0
-          if (Number(q) != q) {
-            errors.push('<b><font color="red">Quantity has to be a number!</font></b>'); // Check if string is a number value
-          } else {
-            if (q < 0) errors.push('<b><font color="red">Quantity cannot be a negative value!</font></b>'); // Check if it is non-negative
-            if (parseInt(q) != q) errors.push('<b><font color="red">Quantity has to be an integer!</font></b>'); // Check that it is an integer
-          }
-          return return_errors ? errors : (errors.length == 0);
-        };
+//output errors based on inputted quantity 
+function isNonNegInt(q, return_errors = false) {
+  var errors = []; // assume no errors at first
+  if (q == '') q = 0; // handle blank inputs as if they are 0
+  if (Number(q) != q) {
+  errors.push('<b><font color="red">Quantity has to be a number!</font></b>'); // Check if string is a number value
+  } else {
+  if (q < 0) errors.push('<b><font color="red">Quantity cannot be a negative value!</font></b>'); // Check if it is non-negative
+  if (parseInt(q) != q) errors.push('<b><font color="red">Quantity has to be an integer!</font></b>'); // Check that it is an integer
+  }
+  return return_errors ? errors : (errors.length == 0);   //when error is solved 
+};
         
   // Determines input in textbox
+  //IR2
   function checkQuantityTextbox(qtyTextbox) {   
     console.log(qtyTextbox)
     errs = isNonNegInt(qtyTextbox.value, true);
@@ -41,6 +42,35 @@ and click purchase to direct them to log in/registration page
     console.log(errs.join('<font color="red">, </font>'))  //when we don't have inventory of quantity entered, display error message in red 
     document.getElementById(qtyTextbox.id + '_label').innerHTML = errs.join('<font color="red">, </font>');
   };
+
+  //IR4
+function validateQuantity() {
+  // Get the value of the quantity input
+  var quantity = request.body['quantity'];
+  let errors = {};
+  let quantity_available = false;
+  let purchaseBtn = document.getElementById("purchase_button");
+  
+  for (let i in quantity) {
+    if (isNoNegInt(quantity[i]) === false) {
+      purchaseBtn.innerHTML = `Please submit a valid quantity for ${products[i].name}!`;
+      return;
+    } else if (quantity[i] > 0) { //if quantity entered is greater than 0, meaning no errors
+      quantity_available = true;
+    } else if (quantity[i] > products[i].quantity_available) {
+      purchaseBtn.innerHTML = `We currently don't have ${quantity[i]} ${products[i].name}. Please check our website later!`;
+      return;
+    } else {
+      purchaseBtn.innerHTML = 'Please select some items to purchase.';
+      return;
+    }
+  }
+  if (quantity_available) {
+    purchaseBtn.innerHTML = 'Purchase';
+  } else {
+    purchaseBtn.innerHTML = 'Please select some items to purchase.';
+  }
+};
 
 
  
@@ -68,8 +98,8 @@ and click purchase to direct them to log in/registration page
             document.getElementById(`quantity${i}`).value = quantity[i];
           });
       }         
-    }   
- }
+    } 
+}
 //processing when sending errors 
   function checkError() {
     //get all elements with class names of quanityt 
@@ -93,24 +123,6 @@ and click purchase to direct them to log in/registration page
         isErrorFlag = true
       }
     }
-
-    function validateQuantity() {
-  // Get the value of the quantity input
-  var quantity = parseInt(document.getElementById("quantity").value);
-  let errors = {};
-  let available_quantity = false;
-for (let i in quanity){
-    if(isNoNegInt(quantity[i])== false){
-         document.getElementById("purcahse_message").innerHTML='Please submit valid data for for ${products[i].name}!';
-    } if (quantity[i] > 0) { //if quantity entered is greater than, meaning no errors
-        available_quantity = true;
-      }else if (quantity[i]>products[i].available_quantity){
-        document.getElementById("purcahse_message").innerHTML = `We currenly don't have ${quantity[i]}${products[i].name}. please check our website later!`
-    }else{
-        document.getElementById("purcahse_message").innerHTML = 'purcahse';
-    }
-  
-  }}
     // Remove error information from current url if no error exists
     //after retuning to the store page 
     if(!isErrorFlag) {
@@ -145,7 +157,7 @@ for (let i in quanity){
       </nav>
     </header>
    
-    <form action="./purchase" method="POST" onsubmit="return checkError()">
+    <form action="./purchase" method="POST" onsubmit="return checkError()" >
    
       <script>   
         // Print items on page
@@ -159,7 +171,7 @@ for (let i in quanity){
                 <div class="card-listTitle">${products[i].name}</div>
                 <div class="card-listText">
                   <label id = "quantity${i}_label"> Enter Quantity Desired: </label>
-                  <div class="input"><input id="quantity${i}" class="quantity" type = "text"  placeholder = "Quantity Available: ${products[i].quantity_available}" name = "quantity" onkeyup="checkQuantityTextbox(this);" onchange="validateQuantity(this);"></div>                </div>
+                  <div class="input"><input id="quantity${i}" class="quantity" type = "text"  placeholder = "Quantity Available: ${products[i].quantity_available}" name = "quantity" onkeyup="checkQuantityTextbox(this);" ></div>                </div>
             
               </div>
             </div>
@@ -174,31 +186,10 @@ for (let i in quanity){
 <footer><!--submit button and submit the quantity entered value"purchase" is detremined in sever.js-->
     <div class="label"></div>
        <center> 
-           <input type="submit" value ="purchase" name="purchase_submit" id="purcahse_message" onlick=""></center> 
-        </form>
+        <input type="submit" value ="purchase" name="purchase_submit" id="purcahse_message" onlick="">        
+      </form>
     </div>
 <script>
-  function validate(){
-  let quantities = request.body['quantity']; //assigning value to quantities as quantity entred in store.html textbox
-  let errors = {};
-  let available_quantity = false;
-  for (i in quantities) {
-    console.log(quantities[i])    
-    if (notAPosInt(quantities[i]) == false) {
-      errors['quantity' + i] = `Please submit valid data for ${products[i].name}!` //if quantity enetred is invalid number 
-    }
-    if (!(quantities[i] === '') && Number(quantities[i]) === 0) {
-      errors['quantity' + i] = `If the ${products[i].name} quantity is 0, please enter blank!` //if the cell is filled with 0 
-    }
-    if (quantities[i] > 0) { //if quantity entered is greater than, meaning no errors
-      available_quantity = true;
-    }
-    if (quantities[i] > products[i].quantity_available) { //if quantity entered is greater than quantity available 
-      errors['quantity' + i] = `We currenly don't have ${(quantities[i])}${products[i].name}. please check our website later!`
-    }
-  }
-  };
-  
   
 </script>
 </footer>

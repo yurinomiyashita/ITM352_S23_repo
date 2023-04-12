@@ -1,7 +1,7 @@
 <!--
 Yurino Miyashita 
 This file is an HTML invoice page allows user to view products and desired quantity that users selected.
-This file is only accessed after sucessful log in. 
+This file is only accessible after sucessful quantity selection 
 -->
 
 <!--this invoice is based on Bootdey company invoice template-->
@@ -39,8 +39,6 @@ This file is only accessed after sucessful log in.
                 quantity_str += quantity[elem] + '\n';
             }
           }
-          let fullname = params.get('fullname');
-          document.getElementById("fullname").textContent = fullname;
         }
       </script>
 </head>
@@ -120,7 +118,7 @@ This file is only accessed after sucessful log in.
     var subtotal = 0;
     for (i = 0; i < products.length; i++) {
         var extended_price = (products[i].price * quantities[i]) //calculate extended price = quantity entered times product price 
-        subtotal = subtotal + extended_price;    //calculate subtotal 
+        var subtotal = subtotal + extended_price;    //calculate subtotal 
         if (quantities[i] != 0) {      //i is not qual to 0 
             document.write(`
             <tbody class="text-95 text-secondary-d3">

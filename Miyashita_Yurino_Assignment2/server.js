@@ -1,7 +1,7 @@
 /*
 Yurino Miyashita
-This file is a server and serve as server side data validation for log in, registration, 
-edit account and store display page to check inpuut
+This file is a server and serve as server side to navigate index,html and 
+direct users to invoice.html when items are selected correcntly
  */
 
 // Load Express Package
@@ -15,25 +15,25 @@ let parser = require("body-parser");
 const qs = require('querystring');
 let fs = require('fs')
 
-// Get Body
+// Get Body taken from Lab12
 app.use(parser.urlencoded({
   extended: true
 }));
 
-// Monitor all requests
+// Monitor all requests taken from Lab 12
 app.all('*', function (request, response, next) {
   console.log(request.method + ' to ' + request.path);
   next();
 });
 
-// Route all other GET requests to files in public 
+// Route all other GET requests to files in public  taken from Lab 12
 app.use(express.static(__dirname + '/public'));
 
 // Load Product Data   
 let products = require(__dirname + '/products.json');
 var json_file_path = __dirname + '/user_data.json';
 
-// Initialize Quantity
+// Initialize Quantity taken from 
 products.forEach((prod, i) => {
   prod.quantity_available = products[i].quantity_available
 })
@@ -44,7 +44,7 @@ var qty_obj = {};   //store quantity entered in store.html
 
 // ------------------------- store.html ----------------------------//
 //determine if there is error in quantity text box.
-//copied from invoice.html in store 1 direcotry and modified 
+//taken from Lab 9 and modified by me 
 function notAPosInt(arrayElement, returnErrors = false) {
   errors = [];    // [] is to display below if functions,  assume no errors at first
   if (arrayElement == '') {
@@ -56,7 +56,7 @@ function notAPosInt(arrayElement, returnErrors = false) {
   if (parseInt(arrayElement) != arrayElement) errors.push('Not an integer!'); // Check that it is an integer
   return (returnErrors ? errors : (errors.length == 0))  //if there is errors or not
 }
-// Routing taking json file    
+// Routing taking json file    , loading json file 
 app.get("/products.json", function (request, response, next) {
   response.type('.js');
   let products_str = `let products = ${JSON.stringify(products)};`;
@@ -66,6 +66,7 @@ app.get("/products.json", function (request, response, next) {
 
 // Process purchase request (validate quantities, check quantity available)
 //IR3
+//taken from my code from last semester 
 app.post("/purchase", function (request, response, next) {
   console.log(request.body); //getting request from invoice.html body
   let quantities = request.body['quantity']; //assigning value to quantities as quantity entred in store.html textbox
@@ -104,7 +105,7 @@ app.post("/purchase", function (request, response, next) {
     let errors_obj = {
       "errors": JSON.stringify(errors)
     };
-    console.log(qs.stringify(quantity_object));
+    console.log(qs.stringify(quantity_object));  
     response.redirect('./store.html?' + qs.stringify(quantity_object) + '&' + qs.stringify(errors_obj)); //redirect to store.html and display errors 
   }
 });

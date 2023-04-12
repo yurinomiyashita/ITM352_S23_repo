@@ -1,0 +1,39 @@
+[
+    {
+        "name": "Callaway Women's REVA Golf Balls",
+        "price": 24.99,
+        "quantity_available":17,
+        "image": "https://worldwidegolf.vtexassets.com/arquivos/ids/10289442-1200-auto?v=638085780209100000&width=1200&height=auto&aspect=true"    
+    },
+    {
+        "name": "Callaway Women's ERC Soft Reva w/ Triple Track Golf Balls",
+        "price": 39.99,
+        "quantity_available":20,
+        "image":"https://worldwidegolf.vtexassets.com/arquivos/ids/10292332-1200-auto?v=638085896623870000&width=1200&height=auto&aspect=true"     
+    },
+    {
+        "name": "Callaway Supersoft Golf Balls",
+        "price": 24.99,
+        "quantity_available":5,
+        "image":"https://worldwidegolf.vtexassets.com/arquivos/ids/10290332-1200-auto?v=638085812744430000&width=1200&height=auto&aspect=true"     
+    },
+    {
+        "name": "Wilson Staff Model Golf Balls",
+        "price": 49.99,
+        "quantity_available":13,
+        "image":"https://worldwidegolf.vtexassets.com/arquivos/ids/9778124-1200-auto?v=637904194169970000&width=1200&height=auto&aspect=true"     
+    },
+    {
+        "name": "Titleist Pro V1 Golf Balls",
+        "price": 55.99,
+        "quantity_available":19,
+        "image":"https://worldwidegolf.vtexassets.com/arquivos/ids/10349097-1200-auto?v=638102126614870000&width=1200&height=auto&aspect=true"     
+    },
+    {
+        "name": "Titleist Pro V1x Golf Balls",
+        "price": 54.99,
+        "quantity_available":16,
+        "image":"https://worldwidegolf.vtexassets.com/arquivos/ids/10287489-1200-auto?v=638085283277470000&width=1200&height=auto&aspect=true"     
+    }
+]
+    

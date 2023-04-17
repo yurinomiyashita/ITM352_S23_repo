@@ -1,7 +1,7 @@
 <!--
 Yurino Miyashita 
 This file is an HTML invoice page allows user to view products and desired quantity that users selected.
-This file is only accessible after sucessful quantity selection 
+This file is only accessed after sucessful log in. 
 -->
 
 <!--this invoice is based on Bootdey company invoice template-->
@@ -39,6 +39,8 @@ This file is only accessible after sucessful quantity selection
                 quantity_str += quantity[elem] + '\n';
             }
           }
+          let fullname = params.get('fullname');
+          document.getElementById("fullname").textContent = fullname;
         }
       </script>
 </head>
@@ -61,8 +63,11 @@ This file is only accessible after sucessful quantity selection
                 <div class="row">
                     <div class="col-12">
                         <div class="text-center text-150">
-                            <span class="text-default-d3">Invoice: Golf Shoppe</span><br>
-                            
+                            <span class="text-default-d3">Invoice: Sunday's Book</span><br>
+                            <script>
+                                document.write(`<p class="message"><a href="/registration-update.html${location.search}"> Edit an account</a></p>`)
+                              </script>
+                              <!--display fullname -->
                         </div>
                     </div>
                 </div>
@@ -77,7 +82,7 @@ This file is only accessible after sucessful quantity selection
                             <span id="fullname" class="text-600 text-110 text-blue align-middle"></span>
                             <br>
                             <span class="text-sm text-grey-m2 align-middle">From:</span>
-                            <span class="text-600 text-110 text-blue align-middle">Golf Shoppe</span>
+                            <span class="text-600 text-110 text-blue align-middle">Sunday's Book</span>
                         </div>
                         <div class="text-grey-m2">
                             <div class="my-1">
@@ -118,7 +123,7 @@ This file is only accessible after sucessful quantity selection
     var subtotal = 0;
     for (i = 0; i < products.length; i++) {
         var extended_price = (products[i].price * quantities[i]) //calculate extended price = quantity entered times product price 
-        var subtotal = subtotal + extended_price;    //calculate subtotal 
+        subtotal = subtotal + extended_price;    //calculate subtotal 
         if (quantities[i] != 0) {      //i is not qual to 0 
             document.write(`
             <tbody class="text-95 text-secondary-d3">
@@ -212,12 +217,12 @@ This file is only accessible after sucessful quantity selection
 </div>
 
     <center><table class = "policy"> 
-       <button><a href="index.html">Submit</a></button>
+       <button><a href="complete.html">Submit</a></button>
 
         <tr>
             <td colspan="4"> <strong>
-                <br> <!-- explains Golf Shoppe policy -->
-                Golf Shoppe POLICY:
+                <br> <!-- explains Sunday Bookstore policy -->
+                SUNDAY BOOKSTORE POLICY:
                 </br>
                 <br>
                 Return only available until a month of purchase

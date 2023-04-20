@@ -54,6 +54,7 @@ function encode(originalText) {
   return text;
 }
 
+
 // ------------------------- store.html ----------------------------//
 //determine if there is error in quantity text box.
 //copied from invoice.html in store 1 direcotry and modified 

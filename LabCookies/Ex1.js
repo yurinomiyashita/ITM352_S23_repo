@@ -75,6 +75,11 @@ app.post("/login", function (request, response) {
     } else {
         response.send(`${username} does not exist`);
     }
+
 });
+app.get('/set_cookie', function(req, res) {
+    res.cookie('name', '<your name>', { expires: new Date(Date.now() + 5000) }).send('Cookie is set');
+});
+
 
 app.listen(8080, () => console.log(`listening on port 8080`));

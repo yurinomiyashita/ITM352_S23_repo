@@ -1,5 +1,5 @@
-[
-    {
+{
+    "Ball":[    {
         "name": "Callaway Women's REVA Golf Balls",
         "price": 24.99,
         "quantity_available":53,
@@ -34,7 +34,8 @@
         "price": 54.99,
         "quantity_available":85,
         "image":"https://worldwidegolf.vtexassets.com/arquivos/ids/10287489-1200-auto?v=638085283277470000&width=1200&height=auto&aspect=true"     
-    },
+    }],
+"Clubs":[
     {
         "name": "PING G430 MAX Driver",
         "price": 549.99,
@@ -70,7 +71,8 @@
         "price": 449.99,
         "quantity_available": 85,
         "image":"https://worldwidegolf.vtexassets.com/arquivos/ids/10412963-1200-auto?v=638115365587270000&width=1200&height=auto&aspect=true"     
-    },
+    }],
+"GPS":[
     {
         "name": "Garmin Approach S42 Golf GPS Smartwatch",
         "price": 299.99,
@@ -107,6 +109,5 @@
         "quantity_available": 85,
         "image":"https://worldwidegolf.vtexassets.com/arquivos/ids/10602982-1200-auto?v=638163714970470000&width=1200&height=auto&aspect=true"     
     }
-
 ]
-    
+}  

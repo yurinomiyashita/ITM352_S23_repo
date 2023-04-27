@@ -7,6 +7,9 @@ edit account and store display page to check inpuut
 // Load Express Package
 let express = require('express');
 let app = express();
+let session = require('express-session');
+
+
 
 // Load Body-Parser Package
 let parser = require("body-parser");
@@ -361,6 +364,35 @@ if (Object.keys(registration_update_errors).length == 0) {
     response.redirect('registration-update.html?' + qs.stringify(errors_obj) + '&' + qs.stringify(qty_obj));
     }
 })  
+
+
+
+app.use(express.urlencoded({ extended: true }));
+app.use(session({secret: "MySecretKey", resave: true, saveUninitialized: true}));
+
+app.all('*', function (request, response, next) {
+    console.log(`Got a ${request.method} to path ${request.path}`);
+    // need to initialize an object to store the cart in the session. We do it when there is any request so that we don't have to check it exists
+    // anytime it's used
+    if(typeof request.session.cart == 'undefined') { request.session.cart = {}; } 
+    next();
+});
+
+app.post("/get_products_data", function (request, response) {
+    response.json(products_data);
+});
+
+app.get("/add_to_cart", function (request, response) {
+    var products_key = request.query['products_key']; // get the product key sent from the form post
+    var quantities = request.query['quantities'].map(Number); // Get quantities from the form post and convert strings from form post to numbers
+    request.session.cart[products_key] = quantities; // store the quantities array in the session cart object with the same products_key. 
+    response.redirect('./cart.html');
+});
+
+app.get("/get_cart", function (request, response) {
+    response.json(request.session.cart);
+});
+
 
 // ------------------ Start server ---------------------//
 app.listen(8080, () => console.log(`listening on port 8080`));

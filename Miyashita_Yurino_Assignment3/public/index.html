@@ -1,0 +1,59 @@
+<!--
+Yurino Miyashita
+This file is an HTML index page to allow users to go to the products display page
+file is modified from smart phone products index.html page
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= <device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Golf Shoppe</title>
+    <style>
+        body {
+            text-align: center;
+            background: white;
+        }
+        h1{
+        background-color: #77ac78!important;
+        font-family: 'Raleway', sans-serif;  
+        color: white;
+        font-size: 3rem;
+        }
+        h2{
+          font-family: 'Raleway', sans-serif;  
+        }
+        img {
+            
+            /* Gray border */
+            border-radius: 4px;
+            /* Rounded border */
+            padding: 10px;
+            /* Some padding */
+            width: 800px;
+            /* Set a small width */
+        }
+
+        /* Add a hover effect (blue shadow) */
+        img:hover {
+            box-shadow: 0 0 5px 1px black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Golf Shoppe</h1>
+    <a onclick="pageRedirect()">
+        <img src="https://www.civitatis.com/blog/wp-content/uploads/2021/01/Terravista-Golf-Club.jpg" height="50%" width="50%">
+    </a>
+    <h2>Welcome to the Golf Shoppe. Click the image to enter the store</h1>
+
+<script>
+function pageRedirect() {
+  location.replace("store.html") //function to redicrect user to store.html
+}
+</script>
+</body>
+</html> 

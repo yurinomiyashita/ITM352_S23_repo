@@ -169,7 +169,7 @@ function validateQuantity() {
                 <div style="max-width:1200px;margin-top:100px"> </div>
                 <div class="Image"><div class="overlay"> <img src="${products[i].image}" class="img-responsive" style="width:50%" alt="Image"></div></div>
                 <div class="card-listTitle">${products[i].name}</div>
-                <div class="card-listText">
+                <div class="card-listText">$${products[i].price}</div>
                   <label id = "quantity${i}_label"> Enter Quantity Desired: </label>
                   <div class="input"><input id="quantity${i}" class="quantity" type = "text"  placeholder = "Quantity Available: ${products[i].quantity_available}" name = "quantity" onkeyup="checkQuantityTextbox(this);" ></div>                </div>
             

@@ -21,21 +21,29 @@ window.addEventListener('DOMContentLoaded', function() {
   
     for(var i = 0; i < 6; i++) {
       html += `
-      <div class="content">
-              <div class="card-list">  <center>  
-                <div style="max-width:1200px;margin-top:100px"> </div>
-                <div class="Image"><div class="overlay"> <img src="${products[key][i].image}" class="img-responsive" style="width:50%" alt="Image"></div></div>
-                <div class="card-listTitle">${products[key][i].name}</div>
-                <div class="card-listText">$${products[key][i].price}
-                  
+    <div class="content">
+    <div class="card-list">
+   
+          <div class="Image"><div class="overlay"> <img src="${products[key][i].image}" class="img-responsive" style="width:50%" alt="Image"></div></div>
+          <div class="card-listTitle">${products[key][i].name}</div>
+          <div class="card-listText">$${products[key][i].price}
+          <br>
+              <label id="quantity${i}_label"> Enter Quantity Desired: </label>
               <div class="input">
-              <input id="quantity${i}" class="quantity" type = "text"  placeholder = "Quantity Available: ${products[key][i].quantity_available}" name = "quantity" onkeyup="checkQuantityTextbox(this);" >
-              </div>             
+              <input id="quantity${i}" name="quantities[${i}]" type="text" placeholder = "Quantity Available: ${products[key][i].quantity_available}" name = "quantity" onkeyup="checkQuantityTextbox(this, '${key}');">
               </div>
+          </div>
+          <br>
+          <div class="icons">
+          <input class="cart-btn" type="submit" name="submit${i}" value="add to cart">
+      </div>
+      <br>
+      <br>
 
-              </div>
-            </div>
-            </center>
+      </div>
+     
+  </div>
+  </section>
   `;
   }
     html += `<input type="hidden" name="products_key" value="${key}">`;

@@ -226,7 +226,7 @@ function isValidUserInfo(input_email, input_password) {
         // Save email in session after login
         request.session.user_email = input_email;
         // send product category and quantity entred as string to invoice.html
-        response.redirect('./store.html?key=Balls&' + qs.stringify(qty_obj));
+        response.redirect('./store.html?key=Mystery&' + qs.stringify(qty_obj));
       }
       }
       return;
@@ -319,7 +319,7 @@ function isValidUserInfo(input_email, input_password) {
           // Save email in session after login
           request.session.user_email = input_email;
           // send product category and quantity entred as string to invoice.html
-          response.redirect('./store.html?key=Balls&' + qs.stringify(qty_obj));
+          response.redirect('./store.html?key=Mystery&' + qs.stringify(qty_obj));
         }
       } catch(err) {
         console.log(err.message);
@@ -423,7 +423,7 @@ if (Object.keys(registration_update_errors).length == 0) {
       // Save email in session after login
       request.session.user_email = input_email;
       // send product category and quantity entred as string to invoice.html
-      response.redirect('./store.html?key=Balls&' + qs.stringify(qty_obj));
+      response.redirect('./store.html?key=Mystery&' + qs.stringify(qty_obj));
     }
   } catch(err) {
     console.log(err.message);
@@ -518,7 +518,7 @@ app.get("/delete_cart", async function (request, response) {
     request.session.cart[products_key][index] = 0;
   }
   // Redirect to cart screen after deleting product
-  response.redirect(`./cart.html`);
+  response.redirect(`./shoppingcart.html`);
 });
 
 // Load nodemailer package
